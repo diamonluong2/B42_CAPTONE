@@ -1,0 +1,35 @@
+.black{
+    background: rgba(0, 0, 0, 0.8);
+}
+.navbar-brand{
+    i{
+        margin-right: 13px;
+    }
+}
+.navbar{
+    padding-top: 5px !important;
+}
+.nav-item-1{
+    i{
+        color: #fff;
+        margin-bottom: 13px !important;
+    }
+}
+.nav-item{
+    padding-top: 13px;
+    a{
+        transition: all .5s;
+    }
+    &:hover a{
+        font-size: 18px;
+    }
+}
+.nav-link{
+        color: #fff !important
+}
+.nav1{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
