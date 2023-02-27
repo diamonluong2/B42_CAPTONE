@@ -1,4 +1,4 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Cyber Phone</title>
@@ -27,8 +27,8 @@
     <!-- My css  -->
     <link rel="stylesheet" href="../css/style.css" />
   </head>
-  <body>
-    <header>
+  <body class="model-open" style="overflow: hidden; padding-right: 17px;" data-bs-padding-right>
+    <header class="black fixed-top">
       <nav class="navbar navbar-expand-lg navbar-dark black fixed-top">
         <div class="container">
           <a class="navbar-brand mr-5" href="#">
@@ -79,19 +79,289 @@
         </div>
       </nav>
     </header>
-    <section class="container py-5">
-      <main role="main">
-        <div class="d-flex justify-content-between phoneBanner mx-5">
+    <section class="py-5 mt-5">
+      <main role="main" class="container mt-5">
+        <div class="d-flex justify-content-between phoneBanner">
           <h3>Phone Management</h3>
           <div class="text-right">
-            <button type="button" class="btn btn-banner">
-              <i class="fa-solid fa-circle-plus me-2"></i>
+            <button
+              type="button"
+              class="btn btn-banner"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              id="addphoneForm"
+            >
+              <i class="fa-solid fa-circle-plus mr-2"></i>
               Add Phone
             </button>
           </div>
         </div>
+        <div class="table-responsive">
+          <table class="table display" id="myTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Photo</th>
+                <th>Description</th>
+                <th>
+                  <em class="fa fa-cog"></em>
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody class="tablePhone" id="table-phone"></tbody>
+          </table>
+        </div>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          aria-hidden="true"
+          style="display: none"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <header class="header-form p-4 text-center header-modal ">
+                <h3 id="header-title">Phone Management</h3>
+              </header>
+              <div class="modal-body">
+                <form role="form" id="formPhone">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                      </div>
+                      <input type="text" name="name" id="name" class="form-control input-sm" placeholder="Phone name">
+                    </div>
+                    <span class="sp-thongbao" id="tbname">‍</span>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa-regular fa-dollar-sign"></i></span>
+                      </div>
+                      <input type="text" name="name" id="price" class="form-control input-sm" placeholder="Price">
+                    </div>
+                    <span class="sp-thongbao" id="tbprice">‍</span>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa-solid fa-mobile-screen"></i></span>
+                      </div>
+                      <input type="text" name="email" id="screen" class="form-control input-sm" placeholder="Screen">
+                    </div>
+                    <span class="sp-thongbao" id="tbscreen">‍</span>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="fa-solid fa-camera"></i
+                        ></span>
+                      </div>
+                      <input
+                        type="text"
+                        name="name"
+                        id="backCam"
+                        class="form-control"
+                        placeholder="Back Camera"
+                      />
+                    </div>
+                    <span class="sp-thongbao" id="tbbackCam">‍</span>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="fa-solid fa-camera"></i
+                        ></span>
+                      </div>
+                      <input
+                        type="text"
+                        name="name"
+                        id="frontCam"
+                        class="form-control"
+                        placeholder="Front Camera"
+                      />
+                    </div>
+                    <span class="sp-thongbao" id="tbfrontCam">‍</span>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="fa-solid fa-link"></i
+                        ></span>
+                      </div>
+                      <input
+                        type="text"
+                        name="name"
+                        id="img"
+                        class="form-control"
+                        placeholder="Image link"
+                      />
+                    </div>
+                    <span class="sp-thongbao" id="tbimg">‍</span>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="fa-solid fa-comment"></i
+                        ></span>
+                      </div>
+                      <input
+                        type="text"
+                        name="name"
+                        id="desc"
+                        class="form-control"
+                        placeholder="Description"
+                      />
+                    </div>
+                    <span class="sp-thongbao" id="tbdesc">‍</span>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="fa-solid fa-signature"></i
+                        ></span>
+                      </div>
+                      <select class="form-control" name="chucvu" id="type">
+                        <option selected="" disabled="">Select brand</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Oppo">Oppo</option>
+                      </select>
+                    </div>
+                    <span class="sp-thongbao" id="tbtype">‍</span>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer" id="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  id="btnAddPhone"
+                  style="display: inline-block"
+                  onclick="createProduct()"
+                >
+                  Add Phone
+                </button>
+                <button
+                  id="btnUpdate"
+                  type="button"
+                  class="btn"
+                  style="display: none"
+                  onclick="updateProduct()"
+                >
+                  Update Phone
+                </button>
+                <button
+                  id="btnClose"
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </section>
+    <footer class="gradient-custom bg-dark text-light text-lg-start">
+      <section class="d-flex justify-content-center p-4 border-bottom">
+        <div class="d-none d-lg-block mr-5">
+          <span>Get connect with us on social network:</span>
+        </div>
+        <div>
+          <a href="" class="mr-4 text-reset">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="mr-4 text-reset">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="mr-4 text-reset">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="mr-4 text-reset">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="mr-4 text-reset">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="" class="mr-4 text-reset">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </section>
+      <section>
+        <div class="container text-md-start mt-5">
+          <div class="row">
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fa-lg fa-solid fa-robot mr-3"></i>Cyber Phone
+              </h6>
+              <p>
+                We pride ourselves on our efficiency and hard work,
+                but most of all our ability to source you the best quality and
+                best value products and devices in the market.
+              </p>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Brands</h6>
+            <p>
+              <a href="#!" class="text-reset">iPhone</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Sumsung</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Xiaomi</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Oppo</a>
+            </p>
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+              <p>
+                <a href="#!" class="text-reset">Pricing</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Settings</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Orders</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Help</a>
+              </p>
+            </div>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+              <p><i class="fas fa-home mr-3"></i> Da Nang, Thanh Khe, VN</p>
+              <p>
+                <i class="fas fa-envelope mr-3"></i>
+                cyberphone@mail.com
+              </p>
+              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+      </section>
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+        © 2022 Copyright:
+        <a class="text-reset fw-bold" href="">Cyber Phone</a>
+      </div>
+    </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
