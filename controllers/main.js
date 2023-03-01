@@ -287,14 +287,22 @@ function sortPrice(searchValue) {
           product.type
         );
       });
-      sortByPrice(product);
-      renderProducts(products);
+      let priceSort = document.getElementById("sort").value;
+      let output;
+      if (priceSort == "true") {
+        output = sortJSON(product, "price", true);
+      } else if (priceSort == "false") {
+        output = sortJSON(product, "price", false);
+      }
+      console.log("Giá trị:", output);
+      renderProducts(output);
     })
     .catch((error) => {
       // Call API thất bại
       alert("API get products error");
     });
 }
+
 function searchNV() {
   // B1: DOM
   let search = getElement("#searchName").value;
@@ -310,9 +318,14 @@ function searchNV() {
   // B3: Gọi hàm renderTable để hiển thị ra giao diện
   renderProducts(newProductList);
 }
-function sortByPrice(products) {
-  products.sort(function (a, b) {
-    return a.price - b.price;
+function sortJSON(arr, key, asc = true) {
+  return arr.sort((a, b) => {
+    let x = a[key];
+    let y = b[key];
+    if (asc) {
+      return x < y ? -1 : x > y ? 1 : 0;
+    } else {
+      return x > y ? -1 : x < y ? 1 : 0;
+    }
   });
-  return products;
 }
