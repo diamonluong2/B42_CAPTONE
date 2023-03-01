@@ -38,6 +38,11 @@ function deleteProduct(productId) {
 
 // Hàm cập nhật sản phẩm
 function updateProduct(productId) {
+  document.getElementById("addphoneForm").addEventListener("click", () => {
+    document.getElementById("header-title").innerHTML = "Update";
+  });
+
+  document.querySelector(".btnFlexible").innerHTML = "Update";
   const product = {
     name: getElement("#name").value,
     price: getElement("#price").value,
@@ -162,13 +167,13 @@ function renderProducts(products) {
 //   `;
 // });
 
-// getElement("#txtSearch").addEventListener("input", (event) => {
-//   // event là một cái object thông tin sự kiện được sinh ra
-//   // event.target: trả ra cái element phát sinh ra sự kiện
-//   console.log(event);
-//   const searchValue = event.target.value;
-//   getProducts(searchValue);
-// });
+getElement("#searchName").addEventListener("input", (event) => {
+  // event là một cái object thông tin sự kiện được sinh ra
+  // event.target: trả ra cái element phát sinh ra sự kiện
+  console.log(event);
+  const searchValue = event.target.value;
+  getProducts(searchValue);
+});
 // getElement("#txtSearch").addEventListener("keydown", (event) => {
 //   // event là một cái object thông tin sự kiện được sinh ra
 //   // event.target: trả ra cái element phát sinh ra sự kiện
@@ -302,21 +307,36 @@ function sortPrice(searchValue) {
       alert("API get products error");
     });
 }
-
-function searchNV() {
+function searchNV(searchValue) {
   // B1: DOM
   let search = getElement("#searchName").value;
+  apiGetProducts(searchValue).then((response) => {
+    // Call API thành công
+    products = response.data.map((product) => {
+      return new Products(
+        product.id,
+        product.name,
+        product.price,
+        product.screen,
+        product.backCam,
+        product.frontCam,
+        product.img,
+        product.description,
+        product.type
+      );
+    });
+    console.log("sản phẩm:", products);
+    let newProductList = products.filter((product) => {
+      let name = product.name.toLowerCase();
+      search = search.toLowerCase();
 
-  // B2: Lọc những student có name khớp với giá trị search
-  let newProductList = product.filter((account) => {
-    let xeploai = account.sort().toLowerCase();
-    search = search.toLowerCase();
-
-    return xeploai.indexOf(search) !== -1;
+      return name.indexOf(search) !== -1;
+    });
+    renderProducts(newProductList);
   });
+  // B2: Lọc những student có name khớp với giá trị search
 
   // B3: Gọi hàm renderTable để hiển thị ra giao diện
-  renderProducts(newProductList);
 }
 function sortJSON(arr, key, asc = true) {
   return arr.sort((a, b) => {
@@ -329,3 +349,7 @@ function sortJSON(arr, key, asc = true) {
     }
   });
 }
+
+document.getElementById("addphoneForm").addEventListener("click", () => {
+  document.getElementById("header-title").innerHTML = "Add";
+});

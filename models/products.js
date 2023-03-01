@@ -7,7 +7,7 @@ function Products(
   backCam,
   frontCam,
   img,
-  descripton,
+  description,
   type
 ) {
   this.id = id;
@@ -17,7 +17,7 @@ function Products(
   this.backCam = backCam;
   this.frontCam = frontCam;
   this.img = img;
-  this.descripton = descripton;
+  this.description = description;
   this.type = type;
 }
 
