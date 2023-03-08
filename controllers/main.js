@@ -206,9 +206,9 @@ function validate() {
     isValid = false;
     getElement("#tbprice").innerHTML = "Giá tiền không được để khoản trống";
     getElement("#tbprice").style.display = "inline";
-  } else if (!/^([1-9]|[1-9][0-9]{1,3}|1[0-9]{1,4}|20000)$/.test(price)) {
+  } else if (!/^[1-9][0-9]{3,3}$|^10000$/.test(price)) {
     isValid = false;
-    getElement("#tbprice").innerHTML = "Giá tiền phải là số";
+    getElement("#tbprice").innerHTML = "Giá tiền phải từ 1000 đến 10000";
     getElement("#tbprice").style.display = "inline";
   } else {
     getElement("#tbprice").innerHTML = "";
