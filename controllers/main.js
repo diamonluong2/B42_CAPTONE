@@ -351,5 +351,9 @@ function sortJSON(arr, key, asc = true) {
 }
 
 document.getElementById("addphoneForm").addEventListener("click", () => {
-  document.getElementById("header-title").innerHTML = "Add";
+  document.getElementById("header-title").innerHTML = "Phone Management";
+  document.getElementById("modal-footer").innerHTML = `
+    <button class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+    <button class="btn btn-primary" onclick="createProduct()">Add</button>
+  `;
 });
