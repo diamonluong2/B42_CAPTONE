@@ -38,11 +38,11 @@ function deleteProduct(productId) {
 
 // Hàm cập nhật sản phẩm
 function updateProduct(productId) {
-  document.getElementById("addphoneForm").addEventListener("click", () => {
-    document.getElementById("header-title").innerHTML = "Update";
-  });
+  // document.getElementById("addphoneForm").addEventListener("click", () => {
+  //   document.getElementById("header-title").innerHTML = "Update";
+  // });
 
-  document.querySelector(".btnFlexible").innerHTML = "Update";
+  // document.querySelector(".btnFlexible").innerHTML = "Update";
   const product = {
     name: getElement("#name").value,
     price: getElement("#price").value,
